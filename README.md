@@ -96,20 +96,29 @@ Encourage analytical skills by allowing students to compare and interpret data a
 
 ## Screenshots
 
-### Simulation Workspace
+### Workspace
 
-*Interactive workspace for conducting measurements and calculations.*
+![Workspace](https://github.com/Teeba-Obaid/Instructional-Design-Educational-Simulation-of-Wood-Properties/blob/master/Screenshots%20of%20the%20Tool/Workspace.png)
+*Interactive workspace for selecting measurements and calculations.*
 
-### Measurement Tools
+### Simulation
 
+![Simulation](https://github.com/Teeba-Obaid/Instructional-Design-Educational-Simulation-of-Wood-Properties/blob/master/Screenshots%20of%20the%20Tool/Wood%20Simulation.png)
+*Interactive workspace for matching measurement tools and wood types.*
+
+### Interactive Wood Measurement
+
+![Measurement](https://github.com/Teeba-Obaid/Instructional-Design-Educational-Simulation-of-Wood-Properties/blob/master/Screenshots%20of%20the%20Tool/Wood%20Measurements.png)
 *Available measurement tools: Density Meter, Porosity Meter, Moisture Meter.*
 
-### Measurement Table
+### Interactive Calculation Table
 
+![Calculation](https://github.com/Teeba-Obaid/Instructional-Design-Educational-Simulation-of-Wood-Properties/blob/master/Screenshots%20of%20the%20Tool/Interactive%20Calculation%20Table.png)
 *Table displaying measured values for selected wood types.*
 
-### Simulation Results
+### Simulation Graphs
 
+![Graphs](https://github.com/Teeba-Obaid/Instructional-Design-Educational-Simulation-of-Wood-Properties/blob/master/Screenshots%20of%20the%20Tool/Simulation%20Results%20Graph.png)
 *Dynamic graphs visualizing calculated properties.*
 
 ## Getting Started
