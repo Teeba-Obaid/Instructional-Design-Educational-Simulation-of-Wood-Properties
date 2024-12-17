@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wood Simulation Workspace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/drag_tools.js') }}" defer></script>
+    <style>
+        .toolbox {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tool {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+        }
+        .wood-type {
+            margin: 20px;
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        .wood-type.highlight {
+            border-color: #f00;
+        }
+        .measurement-tables {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .masked {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Wood Simulation Workspace</h2>
+
+    <!-- Toolbox -->
+    <div class="toolbox">
+        <div>
+            <img id="density_meter" src="{{ url_for('static', filename='tools/density_meter.png') }}" alt="Density Meter" class="tool" draggable="true">
+            <p>Density Meter</p>
+        </div>
+        <div>
+            <img id="porosity_meter" src="{{ url_for('static', filename='tools/porosity_meter.png') }}" alt="Porosity Meter" class="tool" draggable="true">
+            <p>Porosity Meter</p>
+        </div>
+        <div>
+            <img id="moisture_meter" src="{{ url_for('static', filename='tools/moisture_meter.png') }}" alt="Moisture Meter" class="tool" draggable="true">
+            <p>Moisture Meter</p>
+        </div>
+    </div>
+
+    <!-- Wood Types -->
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for wood, data in wood_data.items() %}
+        <div class="wood-type" data-wood="{{ wood }}">
+            <h3>{{ wood }}</h3>
+            <img src="{{ url_for('static', filename=data['image']) }}" alt="{{ wood }}" style="width: 150px;">
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Combined Measurement Table -->
+    <div class="measurement-tables">
+        <h3>Wood Measurements</h3>
+        <table id="combined-table">
+            <thead>
+                <tr>
+                    <th>Wood Type</th>
+                    <th>Density Meter</th>
+                    <th>Porosity Meter</th>
+                    <th>Moisture Meter</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Interactive Calculation Table -->
+    <div class="student-input">
+        <h3>Interactive Calculation Table</h3>
+        <table id="calculation-table">
+            <thead>
+                <tr>
+                    <th>Wood Type</th>
+                    <th>Density (kg/m³)</th>
+                    <th>Porosity (0-1)</th>
+                    <th>Moisture Content (0-1)</th>
+                    <th>Hardness <button id="calculate-hardness" class="calc-btn">Calculate</button></th>
+                    <th>Moisture Resistance <button id="calculate-moisture-resistance" class="calc-btn">Calculate</button></th>
+                    <th>Tensile Strength <button id="calculate-tensile-strength" class="calc-btn">Calculate</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wood, data in wood_data.items() %}
+                <tr>
+                    <td>{{ wood }}</td>
+                    <td><input type="number" step="any" class="density-input" data-wood="{{ wood }}" disabled></td>
+                    <td><input type="number" step="any" class="porosity-input" data-wood="{{ wood }}" min="0" max="1" disabled></td>
+                    <td><input type="number" step="any" class="moisture-input" data-wood="{{ wood }}" min="0" max="1" disabled></td>
+                    <td class="hardness-output" data-wood="{{ wood }}">-</td>
+                    <td class="moisture-resistance-output" data-wood="{{ wood }}">-</td>
+                    <td class="tensile-strength-output" data-wood="{{ wood }}">-</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Plot Containers -->
+    <div id="plot-container">
+        <h3>Simulation Results</h3>
+        <div>
+            <h4>Hardness Plot</h4>
+            <img id="hardness-plot" src="" alt="Hardness Plot" style="width: 400px;">
+        </div>
+        <div>
+            <h4>Moisture Resistance Plot</h4>
+            <img id="moisture-resistance-plot" src="" alt="Moisture Resistance Plot" style="width: 400px;">
+        </div>
+        <div>
+            <h4>Tensile Strength Plot</h4>
+            <img id="tensile-strength-plot" src="" alt="Tensile Strength Plot" style="width: 400px;">
+        </div>
+    </div>
+
+
+
