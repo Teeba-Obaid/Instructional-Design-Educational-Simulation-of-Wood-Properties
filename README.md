@@ -135,5 +135,5 @@ Access the **Educational Simulation of Wood Properties** through your web browse
 
 ## License
 
-  - This project is licensed under the Apache License 2.0 (https://github.com/Teeba-Obaid/educational-simulation-of-wood-properties/blob/master/LICENSE)
+  - This project is licensed under the [Apache License 2.0](https://github.com/Teeba-Obaid/Instructional-Design-Educational-Simulation-of-Wood-Properties/blob/master/LICENSE).
 ---
